@@ -1,0 +1,18 @@
+.container {
+    width: 70%;
+    margin-top: 50px;
+    text-align: center;
+}
+#addUserModal .form-group{
+    display: flex;
+    justify-content: space-between;
+    margin: 30px 15px;
+}
+#addUserModal .input input{
+    height: 35px;
+    width: 73%;
+}
+#addUserModal select{
+    height: 35px;
+    width: 73%;
+}

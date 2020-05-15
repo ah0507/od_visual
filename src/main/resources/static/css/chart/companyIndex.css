@@ -1,0 +1,317 @@
+
+@media (min-width: 980px){
+    html{font-size: 25px!important}
+}
+
+@media (min-width: 1100px) {
+    html{font-size: 26px!important}
+}
+@media (min-width: 1280px) {
+    html{font-size: 28px!important;}
+}
+@media (min-width: 1440px) {
+    html{font-size: 30.8px !important;}
+}
+html{
+    /*background:url('/image/bg.png') no-repeat;*/
+    width:100%;
+    height:100%;
+}
+body {
+    /*background:url('/image/bg.png') no-repeat;*/
+    background:#10213e;
+    position: fixed;
+    bottom: 0;
+    top:0;
+    left:0;
+    right:0;
+}
+
+.modal-top{
+    padding:  0.294rem 1rem 0 1rem;
+    justify-content: space-between;
+}
+.tab-switch{
+    background:url('/image/hover_bg.png')no-repeat;
+    background-size:4rem 0.971rem;
+    width:4.118rem;
+    height:0.971rem;
+    line-height:0.971rem;
+    text-align: center;
+    font-size: 0.588rem;
+    color: #ffffff;
+    box-sizing: border-box;
+}
+.slesct-tab{
+    color:#0194e1!important;
+}
+.modal-title{
+    font:italic bolder 0.85rem/1.471rem Microsoft YaHei;
+    height:1.471rem;
+    color:#ffffff;
+    width:100%;
+    margin-top:-3.5rem;
+    margin-bottom: 2.353rem;
+    text-align: center;
+}
+
+.choice{
+    height:3.5rem;
+    position: relative;
+}
+.choice-tab{
+    bacground: #0b123a;
+    border: 1px solid #4d6a93;
+    background-size:4.294rem 1.588rem;
+    width:6.3rem;
+    height: 1.588rem;
+    color:#ffffff;
+    font-size: 0.412rem;
+    cursor:pointer;
+}
+
+.company-wrapper{
+    width: 3.912rem;
+    position: absolute;
+    top: 40px;
+    color:#0dd8f4;
+    display: none;
+    height: 4.118rem;
+    overflow :auto;
+    background:#00112e;
+    z-index: 99999999999999999;
+    text-align: center;
+}
+
+.calendar-wrapper{
+    position: absolute;
+    top: 28px;
+    left:36%;
+    display: none;
+    height: 230px;
+    color:#0dd8f4!important;
+    background-color:#00112e;
+    z-index: 99999999999999999;
+}
+.company-weekly{
+    height: 36px;
+    line-height: 36px;
+    text-align: center;
+    cursor:pointer;
+}
+
+.header-bg{
+    position: absolute;
+    width: 100%;
+    margin-top:-2.2rem;
+}
+.prompt-box{
+    justify-content:space-between;
+    margin-top: -1.706rem;
+    margin-bottom:1rem;
+}
+.text-preview{
+    width:33%;
+    height: 1.471rem;
+    position: relative;
+}
+
+.text-preview img{
+    width: 100%;
+}
+.modal-main, .daily-view{
+    padding:0 0.882rem;
+    padding-bottom:1rem;
+    margin-top: -0.8rem;
+    flex-direction: column;
+    height:88%;
+    display:none;
+}
+/*.daily-view{*/
+/*    margin-top: 0;*/
+/*}*/
+.daily-view-one, .daily-view-two{
+    flex:4;
+    display: flex;
+    margin-bottom:1rem;
+}
+.daily-view-top{
+    flex:1;
+}
+.daily-view-title{
+    width: 100%;
+    display: flex;
+    flex:1;
+    margin-bottom: 0.294rem;
+}
+.modal-main-one{
+    display: flex;
+    margin-bottom:0.294rem;
+    flex:5;
+    margin-top: -0.6rem;
+}
+.site-rank{
+    width: 33.3%;
+    margin-left: 0.294rem;
+}
+
+.sale-Statistics{
+    width: 33.3%;
+}
+#sale-chart{
+    background:url('/image/reli.png')no-repeat;
+    background-size:100% 100%;
+    width:33.4%;
+    position: relative;
+}
+.hot-tab,.hot-tab1{
+    position: absolute;
+    color:#fff;
+    width: 1rem;
+    text-align: center;
+    font-size:0.39rem;
+    line-height:0.41rem ;
+    top:6%;
+}
+.ride{
+    /*margin-top: 0.6%;*/
+    left: 8.4%;
+    cursor:pointer;
+}
+.time-get{
+    left: 19%;
+    cursor:pointer;
+}
+.time-drive{
+    left: 30%;
+    cursor:pointer;
+}
+.hot-tab-img,.hot-tab1-img{
+    display: none;
+    position: absolute;
+    width: 80%;
+    height: 63%;
+    top:28%;
+    left:10%;
+    color:#ffffff;
+}
+.hot-tab-img img,.hot-tab1-img img{
+    width: 100%;
+    height: 100%;
+
+}
+.modal-main-two{
+    flex:4;
+    margin-bottom:0.294rem;
+}
+.form-chart{
+    width: 25%;
+    margin-left: 0.294rem;;
+}
+.transf-chart{
+    width: 25%;
+    margin-left:0.294rem ;
+}
+.modal-main-there{
+    flex:4;
+}
+.crowd-chart{
+    width: 30%;
+    margin-left:0.294rem ;
+}
+.five-chart{
+    width: 40%;
+    margin-left:0.294rem ;
+}
+
+.transfer-count-rank{
+    width: 30%;
+    margin-left:0.294rem ;
+}
+
+#site-rank,#sale-Statistics,#card-type,#transf-chart,#crowd-chart,#five-chart,#transfer-count-rank, #site-chart,#number-of-consume-chart,#number-of-get-off-chart
+,#alighting-chart,#SiteConsumption-chart,#imine,#Line-consumption-ranking,#changeranking-chart,#CardType-chart,.big-title-content{
+    width: 100%;
+    height: calc(100% - 1rem);
+    background: url(/image/bg_main.png)no-repeat;
+    margin-top: 1rem;
+    background-size:100% 100%;
+    background-position: bottom;
+}
+.big-title-content{
+    padding:0.2rem 4%;
+    color:#0194e1;
+    font-size: 13px;
+}
+.site-rank,.sale-Statistics,.form-chart,.transf-chart,.crowd-chart,.five-chart,.transfer-count-rank,.daily-view-rank,.daily-view-top
+{
+    background: url(/image/bg_title.png)no-repeat;
+    background-size: 100% 1rem;
+    position: relative;
+}
+.chart-title{
+    position: absolute;
+    background-image:-webkit-linear-gradient(360deg,#0075ff 0%,#0072ff 10%,#00eaff 50%,#01aaff 90%,#0395e4 100%);
+    font-size:0.55rem;
+    font-weight: 800;
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    height: 1rem;
+    line-height:1rem;
+    left:0.706rem;
+}
+
+.selcted{
+    display:flex;
+}
+.show{
+    display:block;
+}
+.selection {
+    background: #1a3f96;
+}
+.amap-logo,.amap-copyright {
+    display: none;
+    opacity: 0;
+    z-index: -1;
+}
+.choice-company, .choice-direction{
+    width: 3.912rem;
+    height:0.794rem;
+    margin-top:0.5rem;
+    line-height:0.794rem;
+    margin-right:10px;
+    text-align:center;
+    box-shadow: 0 0 8px #0dd8f4;
+    color: #0dd8f4;
+}
+.choice-month{
+    width: 230px;
+    height:0.794rem;
+    margin-top:0.5rem;
+    line-height:0.794rem;
+    text-align:center;
+    box-shadow: 0 0 8px #0dd8f4;
+    color: #0dd8f4;
+}
+
+.select{
+    background: #1a3f96!important;
+}
+
+.flexoCalendar thead, .flexoCalendar th {
+    background-color:  #00112e;
+    font-weight: normal;
+    color: #0dd8f4;
+}
+.company-wrapper,
+.direction-wrapper,
+.calendar-wrapper{
+    box-shadow: 0 0 8px #0dd8f4;
+    border-radius:0 0 5px 5px;
+    border: 1px solid #4d6a93;
+}
+#calendar-monthly td.tmonth .month {
+    color: #0dd8f4!important;
+}
+

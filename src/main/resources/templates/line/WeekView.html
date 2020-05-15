@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+    <title>index</title>
+    <link rel="stylesheet" href="/css/chart/FlexoCalendar.css">
+    <link rel="stylesheet" href="/css/chart/base.css">
+    <link rel="stylesheet" href="/css/chart/lineIndex.css">
+</head>
+
+<body>
+<div class="modal-top flex">
+    <div class="flex">
+        <a href="/line/dailyView">
+            <div class="tab-switch ">日视图</div>
+        </a>
+        <a href="/line/weekView">
+            <div class="tab-switch slesct-tab"> 周视图</div>
+        </a>
+        <a href="/line/monthView">
+            <div class="tab-switch "> 月视图</div>
+        </a>
+    </div>
+    <div class="flex choice">
+        <div class="choice-tab choice-company">线路查询</div>
+        <div class="choice-tab choice-direction">方向查询</div>
+        <div class="choice-tab choice-month">选择周期
+        </div>
+        <div class="calendar-wrapper">
+            <div id="calendar-weekly"></div>
+        </div>
+        <div class="direction-wrapper">
+            <div class="direction-weekly">上行</div>
+            <div class="direction-weekly">下行</div>
+        </div>
+        <div class="company-wrapper">
+        </div>
+    </div>
+
+</div>
+<img class='header-bg' src='/image/header_bg.png'>
+
+<div class="modal-title">
+    <span style="font-size:1.218rem">天津</span>公交OD数据分析
+</div>
+
+
+<!-- 周视图  -->
+<div class="modal-main ">
+    <div class=" daily-view-title">
+        <div class='daily-view-top'>
+            <div class='chart-title'>文字描述</div>
+            <div class="big-title-content"  id="desc"><!--2020年01月06日到2020年01月12日，808路上行方向一周总计消费次数共为<span class="several-time">？次</span>，换乘次数共为<span class="several-time">？次</span>，拥挤度平均为<span class="several-time">？</span>--></div>
+        </div>
+    </div>
+    <div class=" modal-main-one">
+        <div class="chart-left">
+            <div class='chart-title'>拥挤度图</div>
+            <div id="crowd-chart" data-view="generateLineCrowdChartBarLine" class="chartArea">
+            </div>
+        </div>
+        <div class='chart-right'>
+            <div class='chart-title'>五峰消费图</div>
+            <div id="five-chart" data-view="generateFPChartFiveBars" class="chartArea">
+            </div>
+        </div>
+    </div>
+    <div class="flex modal-main-two">
+        <div class="chart-left ">
+            <div class='chart-title'>消费次数图</div>
+            <div id="consume-chart" data-view="generateLineConsumeChartBarLine" class="chartArea">
+            </div>
+        </div>
+        <div class="chart-right">
+            <div class='chart-title'>站点上下车，在车人数统计图</div>
+            <div id="onAndOff-chart" data-view="generateOnAndOffChartBarLine" class="chartArea">
+            </div>
+        </div>
+    </div>
+    <div class="flex modal-main-there">
+        <div class="chart-left">
+            <div class='chart-title'>换乘次数图</div>
+            <div id="transfer-chart" data-view="generateLineTransferChartBarLine" class="chartArea">
+            </div>
+        </div>
+        <div class="chart-right">
+            <div class='chart-title'>站点换乘次数统计图</div>
+            <div id="siteTransfer" data-view="generateSiteTransferChart" class="chartArea">
+            </div>
+        </div>
+    </div>
+</div>
+<div id="bigg">
+<!--    <div id="bigger"></div>-->
+    <img src="/image/cancel.png">
+</div>
+<!--引入基本的js-->
+<script src="/js/chart/jquery.js"></script>
+<script src="/js/chart/echarts.min.js"></script>
+
+<script src="/js/chart/commonChartHandle.js"></script>
+<script src="/js/chart/FlexoCalendar.js"></script>
+<script src="/js/chart/generalHandleData.js"></script>
+<script src="/js/chart/dateUtil.js"></script>
+
+<script src="/js/chart/line/lineOption.js"></script>
+<script src="/js/chart/baseChart/bar/generateBar.js"></script>
+<script src="/js/chart/baseChart/barLine/generateBarLine.js"></script>
+<script src="/js/chart/baseChart/fiveBars/generateFiveBars.js"></script>
+<!--引入周的统计图-->
+<script src="/js/chart/line/weekAndMonth/fivePeaks.js"></script>
+<script src="/js/chart/line/weekAndMonth/siteTransfer.js"></script>
+<script src="/js/chart/line/weekAndMonth/onAndOff.js"></script>
+<script src="/js/chart/line/weekAndMonth/lineConsume.js"></script>
+<script src="/js/chart/line/weekAndMonth/lineTransfer.js"></script>
+<script src="/js/chart/line/weekAndMonth/crowdBarLine.js"></script>
+<script src="/js/chart/chartDescHandle.js"></script>
+
+<script>
+    $(function () {
+        $(".hot-tab").click(function () {
+            $(this).addClass("slesct-tab").siblings().removeClass("slesct-tab");
+            $('.hot-tab-img').eq($(this).index()).addClass('show').siblings().removeClass('show');
+        })
+
+    })
+
+    let params = {
+        startTime: '2020-01-06',
+        endTime: '2020-01-12',
+        lineNo: '808',
+        direction: '上行'
+    }
+
+    function initChart() {
+        getLineDescByDays(params)
+        $(".chartArea").each(function () {
+            execute($(this), $(this).attr('id'), params, false);
+        });
+    }
+
+    function createData() {
+        // let paramsTime  =  $(".current-day").attr('data-time')
+        let weekTime = getWeekTime();
+        $(".choice-company").text(params.lineNo)
+        $(".choice-month").text(weekTime)
+        $(".choice-direction").text(params.direction)
+        params.startTime = weekTime.split(",")[0];
+        params.endTime = weekTime.split(",")[1];
+        initChart()
+    }
+
+    // 1 初始化所有view2222 div
+    $(function () {
+        createData()
+    })
+
+    // 2 监听所有view2222 div click
+    // $(".chartArea").click(execute($(ggg), params))
+    $(".chartArea").click(function () {
+        $("#bigger").remove()
+        $("#bigg").append("<div id=\"bigger\"></div>")
+        $("#bigg").show()
+        execute($(this),'bigger', params, true)
+    })
+
+    function execute(el, id, params, flag) {
+        //flag参数用于区分是否为放大显示
+        var fnStr = el.data("view")
+        window[fnStr](id, params, flag)
+    }
+
+    //点关闭取消
+    $("#bigg img").click(function () {
+        $("#bigg").hide();
+    });
+
+    //点击查看方向
+    $(function () {
+        $(".choice-direction").click(function () {
+            $(".company-wrapper").removeClass("show");
+            $(".calendar-wrapper").removeClass("show");
+            if ($('.direction-wrapper').hasClass('show')) {
+                $(".direction-wrapper").removeClass("show");
+            } else {
+                $(".direction-wrapper").addClass("show");
+            }
+        });
+    })
+    $(".direction-weekly").click(function () {
+        $('.direction-weekly').eq($(this).index()).addClass('selection').siblings().removeClass('selection');
+        let textt = $('.direction-weekly').eq($(this).index()).text()
+        $(".choice-direction").text(textt);
+        params.direction = textt
+        initChart()
+        $("#bigg").hide();
+        $(".direction-wrapper").removeClass("show");
+    });
+    //点击查看线路
+    $(".choice-company").click(function () {
+        $(".calendar-wrapper").removeClass("show");
+        $(".direction-wrapper").removeClass("show");
+        if ($('.company-wrapper').hasClass('show')) {
+            $(".company-wrapper").removeClass("show");
+        } else {
+            $(".company-wrapper").addClass("show");
+        }
+    });
+    // let companyList = ['111', '22222', '33333', '44444']
+    // let company = '';
+    // for (var i = 0; i < companyList.length; i++) {
+    //     company += '<div class="company-weekly">' + companyList[i] + '</div>'
+    // }
+    // $('.company-wrapper').html(company);
+
+    //点击查看日历
+    $(function () {
+        $(".choice-month ").click(function () {
+            $(".company-wrapper").removeClass("show");
+            $(".direction-wrapper").removeClass("show");
+            if ($('.calendar-wrapper').hasClass('show')) {
+                $(".calendar-wrapper").removeClass("show");
+            } else {
+                $(".calendar-wrapper").addClass("show");
+            }
+        });
+    })
+    //日历
+    $("#calendar-weekly").flexoCalendar({
+        type: 'weekly',
+        today: true,
+        onselect: function (date) {
+            $(".calendar-wrapper").removeClass("show");
+            $(".choice-month").text(date);
+            params.startTime = date.split(",")[0];
+            params.endTime = date.split(",")[1];
+            initChart()
+            $("#bigg").hide();
+        }
+    });
+
+
+
+    $("body").on('click','.company-weekly',function () {
+        $('.company-weekly').eq($(this).index()).addClass('selection').siblings().removeClass('selection');
+        let textt = $('.company-weekly').eq($(this).index()).text()
+        $(".choice-company").text(textt);
+        params.lineNo = textt
+        initChart()
+        $("#bigg").hide();
+        $(".company-wrapper").removeClass("show");
+    });
+
+    //鼠标滑过添加背景色
+    $("body").on('mouseenter','.direction-weekly,.company-weekly',function () {
+        $(this).addClass('selection');
+    })
+    $("body").on('mouseleave','.direction-weekly,.company-weekly',function () {
+        $(this).removeClass('selection');
+    })
+
+    //点击其他地方隐藏弹出框
+    $(document).mouseup(function (e) {
+        var _con = $('.choice-month,.choice-direction,.choice-company,.calendar-wrapper');   // 设置目标区域
+        if (!_con.is(e.target) && _con.has(e.target).length === 0) { // Mark 1
+            $(".company-wrapper").removeClass("show");
+            $(".direction-wrapper").removeClass("show");
+            $(".calendar-wrapper").removeClass("show");
+        }
+    });
+
+</script>
+</body>
+
+</html>

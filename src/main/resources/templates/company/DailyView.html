@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <title>index</title>
+    <link rel="stylesheet" href="/css/chart/FlexoCalendar.css">
+    <link rel="stylesheet" href="/css/chart/base.css">
+    <link rel="stylesheet" href="/css/chart/companyIndex.css">
+</head>
+
+<body>
+<div class="modal-top flex">
+    <div class="flex">
+        <a href="/company/dailyView">
+            <div class="tab-switch slesct-tab">日视图</div>
+        </a>
+        <a href="/company/weekView">
+            <div class="tab-switch"> 周视图 </div>
+        </a>
+        <a href="/company/monthView">
+            <div class="tab-switch"> 月视图 </div>
+        </a>
+    </div>
+    <div class="flex choice">
+        <div class="choice-tab choice-company">选择公司号</div>
+        <div class="choice-tab choice-month">选择日期</div>
+        <!-- <div class="choice-tab choice-month">选择日期</div> -->
+        <div class="calendar-wrapper ">
+            <div id="calendar"></div>
+        </div>
+        <div class="company-wrapper">
+            <div class="company-weekly"></div>
+        </div>
+    </div>
+</div>
+<img class='header-bg' src='/image/header_bg.png'></img>
+<div class="modal-title">
+    <span style="font-size:1.218rem">天津</span>公交OD数据分析
+</div>
+<!-- 日视图 -->
+<div class="daily-view selcted">
+    <div class=" daily-view-one">
+        <div class="daily-view-rank" style="width: 33.3%;">
+            <div class='chart-title'>下车排名图</div>
+            <div id="alighting-chart" data-view="generateAlightingChart" class="chartArea">
+            </div>
+        </div>
+        <div id="sale-chart">
+            <div class="hot-tab1 ride slesct-tab" name="consumeCount">消费<br>次数</div>
+            <div class="hot-tab1 time-get" name="offCount">下车<br>次数</div>
+            <div class="hot-tab1 time-drive" name="transferCount">换乘<br>次数</div>
+            <!--<div class='hot-tab1-img show'><img src="/image/timg.jpg" alt=""></div>
+            <div class='hot-tab1-img'><img src="/image/timg.jpg" alt=""></div>
+            <div class='hot-tab1-img'><img src="/image/timg.jpg" alt=""></div>-->
+            <div class='hot-tab1-img show'>
+                <div id="company-map" data-view="showCompanyDayHeatMap" class="chartArea"></div>
+            </div>
+        </div>
+        <div class='daily-view-rank' style="width: 33.3%;">
+            <div class='chart-title'>站点消费排名图</div>
+            <div id="SiteConsumption-chart" data-view="generateScrChart" class="chartArea">
+            </div>
+        </div>
+    </div>
+    <div class=" daily-view-title" style="margin-bottom: 1rem;">
+        <div class='daily-view-top'>
+            <div class='chart-title'>文字描述</div>
+            <div class="big-title-content" >
+                <div style="padding-bottom: 0.2rem" id="desc"><!--2020年01月06日，08公司总计消费次数共为<span class="several-time">？次</span>--></div>
+                <div id="cardTypeDesc"><!--支付宝消费为<span class="several-time">？次</span>，微信消费为<span class="several-time">？次</span>，银联卡消费为<span class="several-time">？次</span>，CPU月票消费为<span class="several-time">？次</span>，交通部卡消费为<span class="several-time">？次</span>，M1客票卡消费为<span class="several-time">？次</span>，城市卡消费为<span class="several-time">？次</span>，银联码消费为<span class="several-time">？次</span>，M1月票卡消费为<span class="several-time">？次</span>，CPU客票消费为<span class="several-time">？次</span>--></div>
+            </div>
+        </div>
+    </div>
+    <div class="flex daily-view-two">
+        <div class="daily-view-rank " style="width:17%; margin-right: 0.8rem;">
+            <div class='chart-title' >五峰排名图</div>
+            <div id="imine" data-view="generateImineChart" class="chartArea">
+            </div>
+        </div>
+        <div class="daily-view-rank" style="width:33%;margin-right: 0.8rem;">
+            <div class='chart-title'>线路消费排名</div>
+            <div id="Line-consumption-ranking" data-view="generatelcrChart" class="chartArea">
+            </div>
+        </div>
+        <div class="daily-view-rank" style="width:33%; margin-right: 0.8rem;">
+            <div class='chart-title'>换乘排名</div>
+            <div id="changeranking-chart" data-view="generateChangerankingChart" class="chartArea">
+            </div>
+        </div>
+        <div class="daily-view-rank" style="width:17%;">
+            <div class='chart-title'>卡类型消费占比图</div>
+            <div id="CardType-chart" data-view="generateCardTypePie" class="chartArea">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="bigg">
+    <img src="/image/cancel.png">
+</div>
+
+<script src="/js/chart/jquery.js"></script>
+<script src="/js/chart/echarts.min.js"></script>
+<!-- 日历 -->
+<script src="/js/chart/FlexoCalendar.js"></script>
+
+<script src="/js/chart/generalHandleData.js"></script>
+<script src="/js/chart/dateUtil.js"></script>
+<!-- 基础 -->
+<script src="/js/chart/baseChart/bar/generateBar.js"></script>
+<script src="/js/chart/baseChart/barLine/generateBarLine.js"></script>
+<script src="/js/chart/baseChart/fiveBars/generateFiveBars.js"></script>
+<script src="/js/chart/baseChart/pie/generatePie.js"></script>
+<script src="/js/chart/baseChart/dynamicBar/generateDynamicBar.js"></script>
+<script src="/js/chart/baseChart/lineChart/generateLineChart.js"></script>
+
+<!-- 日 -->
+<script src="/js/chart/company/daily/alightChart.js"></script>
+<script src="/js/chart/company/daily/cardTypeChart.js"></script>
+<script src="/js/chart/company/daily/changeRanking.js"></script>
+<script src="/js/chart/company/daily/imine.js"></script>
+<script src="/js/chart/company/daily/lineConsumptionRanking.js"></script>
+<script src="/js/chart/company/daily/SiteConsumptionChart.js"></script>
+<script src="/js/chart/company/companyOption.js"></script>
+
+
+<!-- 热力图 -->
+<script src="//webapi.amap.com/maps?v=1.4.15&key=d3755f8fa32d53e82dfcfc67e6d6fcb4"></script>
+<script src="/js/chart/map/heatMap.js"></script>
+<script src="/js/chart/chartDescHandle.js"></script>
+
+<script>
+    let params = {
+        queryTime: '2020-01-15',
+        deptNo: '08'
+    }
+
+    $(function () {
+        let dayTime = getDayTime();
+        $(".choice-company").text(params.deptNo)
+        $(".choice-month").text(dayTime)
+        params.queryTime= dayTime
+        initChart()
+    })
+    $(function () {
+        $(".hot-tab1").click(function () {
+            $(this).addClass("slesct-tab").siblings().removeClass("slesct-tab");
+            // $('.hot-tab1-img').eq($(this).index()).addClass('show').siblings().removeClass('show');
+
+            let name = $(this).attr("name");
+            switch (name) {
+                case "consumeCount":
+                    heatMap.getConsumeCountMap('company-map')
+                    break;
+                case "transferCount":
+                    heatMap.getTransferCountMap('company-map')
+                    break;
+                case "offCount":
+                    heatMap.getOffCountMap('company-map')
+                    break;
+                default:
+                    break;
+            }
+        })
+    })
+
+    // 1 初始化所有view2222 div
+    $(function () {
+        // initChart()
+    })
+
+    function initChart() {
+        getCompDescByDay(params)
+        $(".chartArea").each(function () {
+            execute($(this), $(this).attr('id'), params, false);
+        });
+    }
+
+    // 2 监听所有view2222 div click
+    // $(".chartArea").click(execute($(ggg), params))
+    $(".chartArea").click(function () {
+        $("#bigger").remove()
+        $("#bigg").append("<div id=\"bigger\"></div>")
+        $("#bigg").show()
+        execute($(this),'bigger', params, true)
+    })
+
+    function execute(el, id, params, flag) {
+        //flag参数用于区分是否为放大显示
+        var fnStr = el.data("view")
+        window[fnStr](id, params, flag)
+    }
+
+    //点关闭取消
+    $("#bigg img").click(function () {
+        $("#bigg").hide();
+    });
+
+    //点击查看公司号
+    $(".choice-company").click(function () {
+        $(".calendar-wrapper").removeClass("show");
+        if ($('.company-wrapper').hasClass('show')) {
+            $(".company-wrapper").removeClass("show");
+        } else {
+            $(".company-wrapper").addClass("show");
+        }
+    });
+
+    $('.hot-tab-img').eq($(this).index()).addClass('show').siblings().removeClass('show');
+
+
+    //点击查看日历
+    $(".choice-month").click(function () {
+        $(".company-wrapper").removeClass("show");
+        if ($('.calendar-wrapper').hasClass('show')) {
+            $(".calendar-wrapper").removeClass("show");
+        } else {
+            $(".calendar-wrapper").addClass("show");
+        }
+    });
+
+    //日历
+    $("#calendar").flexoCalendar({ setYear: 2020, setMonth: 1, selectDate: 'each-each-each' ,
+        onselect: function (date) {
+            $(".calendar-wrapper").removeClass("show");
+            $(".choice-month").text(date);
+            params.queryTime = date
+            $("#bigg").hide()
+            initChart()
+        }
+    });
+
+    $("body").on('click','.company-weekly',function () {
+        $('.company-weekly').eq($(this).index()).addClass('selection').siblings().removeClass('selection');
+        let textt = $('.company-weekly').eq($(this).index()).text()
+        $(".choice-company").text(textt);
+        $(".company-wrapper").removeClass("show");
+        params.deptNo = textt
+        $("#bigg").hide()
+        initChart()
+    });
+
+    //鼠标滑过添加背景色
+    $("body").on('mouseenter','.company-weekly',function () {
+        $(this).addClass('selection');
+    })
+    $("body").on('mouseleave','.company-weekly',function () {
+        $(this).removeClass('selection');
+    })
+
+    //点击其他地方隐藏弹出框
+    $(document).mouseup(function (e) {
+        var _con = $('.choice-month,.choice-direction,.choice-company,.calendar-wrapper');   // 设置目标区域
+        if (!_con.is(e.target) && _con.has(e.target).length === 0) { // Mark 1
+            $(".company-wrapper").removeClass("show");
+            $(".direction-wrapper").removeClass("show");
+            $(".calendar-wrapper").removeClass("show");
+        }
+    });
+
+</script>
+</body>
+
+</html>

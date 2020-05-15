@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+    <title>index</title>
+    <link rel="stylesheet" href="/css/chart/FlexoCalendar.css">
+    <link rel="stylesheet" href="/css/chart/base.css">
+    <link rel="stylesheet" href="/css/chart/groupIndex.css">
+</head>
+
+<body>
+<div class="modal-top flex">
+    <div class="flex">
+        <a href="/group/dailyView">
+            <div class="tab-switch slesct-tab">日视图</div>
+        </a>
+        <a href="/group/weekView">
+            <div class="tab-switch "> 周视图</div>
+        </a>
+        <a href="/group/monthView">
+            <div class="tab-switch "> 月视图</div>
+        </a>
+    </div>
+    <div class="flex choice">
+        <!--<div class="choice-tab choice-company">选择公司号</div>-->
+        <div class="choice-tab choice-month">选择日期</div>
+        <!--        <i class="sanjiao_down"></i>-->
+        <div class="calendar-wrapper ">
+            <div id="calendar"></div>
+        </div>
+    </div>
+</div>
+<img class='header-bg' src='/image/header_bg.png'></img>
+<div class="modal-title">
+    <span style="font-size:1.218rem">天津</span>公交OD数据分析
+</div>
+<!--<div class='flex prompt-box'>-->
+<!--    <div class='text-preview'>-->
+<!--        <img src="/image/left.png" alt="">-->
+<!--                <div class='horse-race-lamp'> 出行乘坐车次：<span style="color:#ad8430;" id="avgGetOnStationCount"></span>次/车-->
+<!--                    平均在车上时间：<span style="color:#ad8430;" id="avgOnTime"></span>分钟/人-->
+<!--                    平均乘车次数：<span style="color:#ad8430;" id="avgRideCount"></span>次/天-->
+<!--                </div>-->
+<!--    </div>-->
+<!--    <div class='text-preview'>-->
+<!--        <img src="/image/right.png" alt="">-->
+<!--        <div class='time-weather'>-->
+<!--            &lt;!&ndash;            09:35:22&nbsp; | &nbsp;2019-10-19 &nbsp; 星期一&nbsp; 多云转晴 &nbsp;8-13℃&ndash;&gt;-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+<!-- 日视图 -->
+<div class="daily-view selcted">
+    <div class=" daily-view-one">
+        <div class="frist-top flex" style="width: 33.3%;">
+            <div class="daily-view-rank" style="width: 100%; flex:1;">
+                <div class='chart-title'>文字说明</div>
+                <div class="big-title-content flex">
+                    <div class="each-title">
+                        <div>出行乘坐车次</div>
+                        <span style="color:#21e1dc; font-size:22px;" id="avgGetOnStationCount"></span></span><span>&nbsp;次</span>
+                    </div>
+                    <div class="each-title">
+                        <div style=>平均在车上时间</div>
+                        <span style="color:#a66e5c; font-size:22px;" id="avgOnTime"></span><span>&nbsp;秒</span></div>
+                    <div class="each-title" style="border-right:1px dashed transparent;">
+                        <div>平均乘车次数</div>
+                        <span style="color:#c684cd; font-size:22px;" id="avgRideCount"></span><span>&nbsp;次</span></div>
+                </div>
+            </div>
+            <div class="daily-view-rank" style="width: 100%;flex: 3; margin-top:0.4rem">
+                <div class='chart-title'>下车排名图</div>
+                <div id="alighting-chart" data-view="generateAlightingChart" class="chartArea"></div>
+            </div>
+
+        </div>
+
+        <div id="sale-chart">
+            <div class="hot-tab1 ride slesct-tab" name="consumeCount">乘车</div>
+            <div class="hot-tab1 time-get" name="offCount">下车<br>次数</div>
+            <div class="hot-tab1 time-drive" name="transferCount">换乘<br>次数</div>
+            <!--<div class='hot-tab1-img show'><img src="/image/timg.jpg" alt=""></div>
+            <div class='hot-tab1-img'>5555<img src="/image/timg.jpg" alt=""></div>
+            <div class='hot-tab1-img'>44444<img src="/image/timg.jpg" alt=""></div>-->
+            <div class='hot-tab-img show'>
+                <div id="group-map" data-view="showGroupDayHeatMap" class="chartArea"></div>
+            </div>
+        </div>
+        <div class="flex" style="width: 33.3%; flex-direction: column; margin-top: -1rem;">
+            <div class="daily-view-rank" style="width: 100%; flex:1;">
+                <div class='chart-title'>文字说明</div>
+                <div class="text-description-details">
+                    <div style="padding-bottom: 0.1rem" id="desc"><!--2020年01月06日，集团总计消费次数共为<span class="several-time">？次</span>--></div>
+                    <div title="" id="cardTypeDesc"><!--支付宝消费为<span class="several-time">？次</span>，微信消费为<span class="several-time">？次</span>，银联卡消费为<span class="several-time">？次</span>，CPU月票消费为<span class="several-time">？次</span>，交通部卡消费为<span class="several-time">？次</span>，M1客票卡消费为<span class="several-time">？次</span>城市卡消费为<span class="several-time">？次</span>，银联码消费为<span class="several-time">？次</span>，M1月票卡消费为<span class="several-time">？次</span>，CPU客票消费为<span class="several-time">？次</span>--></div>
+                </div>
+            </div>
+            <div class='daily-view-rank' style="width: 100%; margin-top: 0.4rem; flex:3;">
+                <div class='chart-title'>站点消费排名图</div>
+                <div id="SiteConsumption-chart" data-view="generateScrChart" class="chartArea">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="flex daily-view-two">
+        <div class="daily-view-rank " style="width:17%; margin-right: 0.8rem;">
+            <div class='chart-title'>五峰图</div>
+            <div id="imine" data-view="generateImineChart" class="chartArea">
+            </div>
+        </div>
+        <div class="daily-view-rank" style="width:33%;margin-right: 0.8rem;">
+            <div class='chart-title'>线路消费排名</div>
+            <div id="Line-consumption-ranking" data-view="generatelcrChart" class="chartArea">
+            </div>
+        </div>
+        <div class="daily-view-rank" style="width:33%; margin-right: 0.8rem;">
+            <div class='chart-title'>换乘排名</div>
+            <div id="changeranking-chart" data-view="generateChangerankingChart" class="chartArea">
+            </div>
+        </div>
+        <div class="daily-view-rank" style="width:17%;">
+            <div class='chart-title'>卡类型消费占比图</div>
+            <div id="card-type" data-view="generateCardTypePie" class="chartArea">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="bigg">
+    <img src="/image/cancel.png">
+</div>
+
+<!-- 周视图 / 月视图 -->
+<script src="/js/chart/jquery.js"></script>
+<script src="/js/chart/echarts.min.js"></script>
+<script src="/js/chart/FlexoCalendar.js"></script>
+<script src="/js/chart/generalHandleData.js"></script>
+<script src="/js/chart/dateUtil.js"></script>
+
+<script src="/js/chart/baseChart/dynamicBar/generateDynamicBar.js"></script>
+<script src="/js/chart/baseChart/lineChart/generateLineChart.js"></script>
+<script src="/js/chart/baseChart/bar/generateBar.js"></script>
+<script src="/js/chart/baseChart/pie/generatePie.js"></script>
+<script src="/js/chart/group/daily/alightChart.js"></script>
+<script src="/js/chart/group/daily/SiteConsumptionChart.js"></script>
+<script src="/js/chart/group/daily/imine.js"></script>
+<script src="/js/chart/group/daily/LinConsumptionRanking.js"></script>
+<script src="/js/chart/group/daily/changeRanking.js"></script>
+<script src="/js/chart/group/daily/cardTypeChart.js"></script>
+<script src="/js/chart/baseChart/lineChart/generateLineChart.js"></script>
+
+<!-- 热力图 -->
+<script src="//webapi.amap.com/maps?v=1.4.15&key=d3755f8fa32d53e82dfcfc67e6d6fcb4"></script>
+<!--<script src="/js/chart/map/mapApi.js"></script>-->
+<script src="/js/chart/map/heatMap.js"></script>
+<script src="/js/chart/chartDescHandle.js"></script>
+
+<script>
+
+    $(function () {
+        $(".hot-tab1").click(function () {
+            $(this).addClass("slesct-tab").siblings().removeClass("slesct-tab");
+            // $('.hot-tab1-img').eq($(this).index()).addClass('show').siblings().removeClass('show');
+
+            let name = $(this).attr("name");
+            switch (name) {
+                case "consumeCount":
+                    heatMap.getConsumeCountMap('group-map')
+                    break;
+                case "transferCount":
+                    heatMap.getTransferCountMap('group-map')
+                    break;
+                case "offCount":
+                    heatMap.getOffCountMap('group-map')
+                    break;
+                default:
+                    break;
+            }
+        })
+    })
+
+    let params = {
+        queryTime: '2020-01-15',
+    }
+
+    $(function () {
+        let dayTime = getDayTime();
+        $(".choice-month").text(dayTime)
+        params.queryTime = dayTime
+        initChart()
+    })
+
+    // 1 初始化所有view2222 div
+    $(function () {
+        // initChart()
+        // showGroupDayHeatMap('group-map',params);
+        getAvg(params)
+    })
+
+    function initChart() {
+        getGroupDescByDay(params)
+        $(".chartArea").each(function () {
+            execute($(this), $(this).attr('id'), params, false);
+        });
+    }
+
+    // 2 监听所有view2222 div click
+    // $(".chartArea").click(execute($(ggg), params))
+    $(".chartArea").click(function () {
+        $("#bigger").remove()
+        $("#bigg").append("<div id=\"bigger\"></div>")
+        $("#bigg").show()
+        execute($(this), 'bigger', params, true)
+    })
+
+    function execute(el, id, params, flag) {
+        //flag参数用于区分是否为放大显示
+        var fnStr = el.data("view")
+        window[fnStr](id, params, flag)
+    }
+
+    //点关闭取消
+    $("#bigg img").click(function () {
+        $("#bigg").hide();
+    });
+
+
+    //点击查看日历
+    $(".choice-tab ").click(function () {
+        if ($('.calendar-wrapper').hasClass('show')) {
+            $(".calendar-wrapper").removeClass("show");
+        } else {
+            $(".calendar-wrapper").addClass("show");
+        }
+    });
+
+    //日历
+    $("#calendar").flexoCalendar({
+        setYear: 2020, setMonth: 1, selectDate: 'each-each-each',
+        onselect: function (date) {
+            $(".calendar-wrapper").removeClass("show");
+            $(".choice-month").text(date);
+            params.queryTime = date
+            $("#bigg").hide()
+            initChart()
+            getAvg(params)
+        }
+    });
+
+    let getAvg = function (params) {
+       /* $('#avgGetOnStationCount').empty()
+        $('#avgOnTime').empty()
+        $('#avgRideCount').empty()*/
+        $.ajax({
+            type: 'GET',
+            url: '/group/day/avgStatistics',
+            data: {
+                queryTime: params.queryTime
+            },
+            success: function (result) {
+                let data = result.data
+                if (data) {
+                    if(data.avgGetOnStationCount){
+                        $('#avgGetOnStationCount').text(data.avgGetOnStationCount.toFixed(3))
+                    }else{
+                        $('#avgGetOnStationCount').text('')
+                    }
+                    if(data.avgOnTime){
+                        $('#avgOnTime').text(data.avgOnTime.toFixed(0))
+                    }else{
+                        $('#avgOnTime').text('')
+                    }
+                    if(data.avgRideCount){
+                        $('#avgRideCount').text(data.avgRideCount.toFixed(3))
+                    }else{
+                        $('#avgRideCount').text('')
+                    }
+                }
+            },
+            dataType: 'json'
+        });
+    }
+</script>
+</body>
+
+</html>

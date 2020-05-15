@@ -1,0 +1,31 @@
+.container {
+    width:55%;
+    background-color: #fff;
+    box-shadow: 2px 2px 5px #ccc ;
+    margin-top:40px;
+    padding: 20px;
+    position: relative;
+}
+body{
+    background-color: #eee;
+    font-size: 15px;
+
+}
+.form-control::-webkit-input-placeholder{
+    font-size: 13px;
+}
+.form-control{
+    height: 30px;
+    width: 60%;
+}
+.img{
+    width: 110px;
+    position: absolute;
+    left: -35px;
+    top: -40px;
+}
+.form-group{
+    display: flex;
+    justify-content: space-between;
+    margin: 30px 15px;
+}

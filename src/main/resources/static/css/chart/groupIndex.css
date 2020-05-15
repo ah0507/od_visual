@@ -1,0 +1,339 @@
+
+@media (min-width: 980px){
+    html{font-size: 25px!important}
+} /*>=1024Ã§Å¡â€žÃ¨Â®Â¾Ã¥Â¤â€¡*/
+
+@media (min-width: 1100px) {
+    html{font-size: 26px!important}
+} /*>=1100Ã§Å¡â€žÃ¨Â®Â¾Ã¥Â¤â€¡*/
+@media (min-width: 1280px) {
+    html{font-size: 28px!important;}
+} /*>=1280Ã§Å¡â€žÃ¨Â®Â¾Ã¥Â¤â€¡*/
+@media (min-width: 1440px) {
+    html{font-size: 30.8px !important;}
+}
+html{
+    /*background:url('/image/bg.png') no-repeat;*/
+    width:100%;
+    height:100%;
+}
+body {
+    /*background:url('/image/bg.png') no-repeat;*/
+    background:#10213e;
+    position: fixed;
+    bottom: 0;
+    top:0;
+    left:0;
+    right:0;
+}
+#cardTypeDesc{
+    display: -webkit-box !important;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.modal-top{
+    padding:  0.294rem 1rem 0 1rem;
+    justify-content: space-between;
+}
+.tab-switch{
+    background:url('/image/hover_bg.png')no-repeat;
+    background-size:4rem 0.971rem;
+    width:4.118rem;
+    height:0.971rem;
+    line-height:0.971rem;
+    text-align: center;
+    font-size: 0.588rem;
+    color: #ffffff;
+    box-sizing: border-box;
+}
+.slesct-tab{
+    color:#0194e1!important;
+}
+.modal-title{
+    font:italic bolder 0.85rem/1.471rem Microsoft YaHei;
+    height:1.471rem;
+    color:#ffffff;
+    width:100%;
+    margin-top:-3.5rem;
+    margin-bottom: 2.353rem;
+    text-align: center;
+}
+
+.choice{
+    height:3.5rem;
+}
+.choice-tab{
+    bacground: #0b123a;
+    border: 1px solid #4d6a93;
+    line-height: 1.765rem;
+    color:#ffffff;
+    margin-top: -0.235rem;
+    cursor:pointer;
+    width:6.3rem;
+    height: 1.588rem;
+    line-height: 1.765rem;
+}
+.calendar-wrapper {
+    /* margin-left: -40%; */
+    /* margin-top: 10%; */
+    min-height: 230px;
+    display: none;
+    z-index: 999;
+    position: absolute;
+    top :39px;
+}
+.header-bg{
+    position: absolute;
+    width: 100%;
+    margin-top:-2.2rem;
+}
+.prompt-box{
+    justify-content:space-between;
+    margin-top: -1.706rem;
+    margin-bottom:1rem;
+}
+.text-preview{
+    width:33%;
+    height: 1.471rem;
+    position: relative;
+}
+.horse-race-lamp{
+    width:80%;
+    position: absolute;
+    height: 1.471rem;
+    line-height: 1.471rem;
+    top:0;
+    font-size:0.5rem;
+    color:#fff;
+    overflow: hidden;
+}
+.time-weather{
+    position: absolute;
+    height: 1.471rem;
+    line-height: 1.571rem;
+    top:0;
+    left:10%;
+    width: 100%;
+    text-align: center;
+    font-size:0.5rem;
+    color:#fff;
+}
+.text-preview img{
+    width: 100%;
+}
+.modal-main, .daily-view{
+    padding:0 0.882rem;
+    padding-bottom:1rem;
+    margin-top: -0.4rem;
+    flex-direction: column;
+    height:88%;
+    display:none;
+}
+/*.daily-view{*/
+/*    margin-top: 0;*/
+/*}*/
+.daily-view-one, .daily-view-two{
+    flex:1;
+    display: flex;
+    margin-bottom:1rem;
+}
+.daily-view-two{
+    margin-bottom:1.6rem;
+}
+.modal-main-one{
+    display: flex;
+    margin-bottom:0.294rem;
+    flex:5;
+}
+.site-rank{
+    /*width: 33.3%;*/
+    margin-top: 1.2rem;
+}
+
+.sale-Statistics{
+    margin-top: 1.2rem;
+    width: 33.3%;
+}
+#sale-chart{
+    background:url('/image/reli.png')no-repeat;
+    background-size:100% 100%;
+    width:33.4%;
+    position: relative;
+}
+.hot-tab,.hot-tab1{
+    position: absolute;
+    color:#fff;
+    width: 1rem;
+    text-align: center;
+    font-size:0.39rem;
+    line-height:0.41rem ;
+    top:6%;
+}
+.ride{
+    /*margin-top: 0.6%;*/
+    left: 8.4%;
+    cursor:pointer;
+}
+.time-get{
+    left: 19%;
+    cursor:pointer;
+}
+.time-drive{
+    left: 30%;
+    cursor:pointer;
+}
+.hot-tab-img,.hot-tab1-img{
+    display: none;
+    position: absolute;
+    width: 80%;
+    height: 63%;
+    top:28%;
+    left:10%;
+    color:#ffffff;
+}
+.hot-tab-img img,.hot-tab1-img img{
+    width: 100%;
+    height: 100%;
+
+}
+/* Ã§Â¬Â¬Ã¤ÂºÅ’Ã©Æ’Â¨Ã¥Ë†â€  */
+.modal-main-two{
+    flex:3;
+    margin-bottom:0.294rem;
+}
+.form-chart{
+    width: 25%;
+    margin-left: 0.294rem;;
+}
+.transf-chart{
+    width: 25%;
+    margin-left:0.294rem ;
+}
+.modal-main-there{
+    flex:4;
+}
+.crowd-chart{
+    width: 30%;
+    margin-left:0.294rem ;
+}
+.five-chart{
+    width: 40%;
+    margin-left:0.294rem ;
+}
+
+.transfer-count-rank{
+    width: 30%;
+    margin-left:0.294rem ;
+}
+
+#site-rank,#sale-Statistics,#card-type,#transf-chart,#crowd-chart,#five-chart,#transfer-count-rank, #site-chart,#number-of-consume-chart,#number-of-get-off-chart
+,#SiteConsumption-chart,#imine,#Line-consumption-ranking,#changeranking-chart,#CardType-chart,.big-title-content,.text-description-details,#alighting-chart{
+    width: 100%;
+    height: calc(100% - 1rem);
+    background: url(/image/bg_main.png)no-repeat;
+    margin-top: 1rem;
+    background-size:100% 100%;
+    background-position: bottom;
+}
+.site-rank,.sale-Statistics,.form-chart,.transf-chart,.crowd-chart,.five-chart,.transfer-count-rank,.daily-view-rank,.Get-off-car,.text-title
+{
+    background: url(/image/bg_title.png)no-repeat;
+    background-size: 100% 1rem;
+    position: relative;
+}
+.chart-title{
+    position: absolute;
+    background-image:-webkit-linear-gradient(360deg,#0075ff 0%,#0072ff 10%,#00eaff 50%,#01aaff 90%,#0395e4 100%);
+    font-size:0.55rem;
+    font-weight: 800;
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    height: 1rem;
+    line-height:1rem;
+    left:0.706rem;
+}
+
+.selcted{
+    display:flex;
+}
+.show{
+    display:block;
+}
+.calendar-wrapper{
+    box-shadow: 0 0 8px #0dd8f4;
+    border-radius:0 0 5px 5px;
+    border: 1px solid #4d6a93;
+    background-color:  #00112e;
+    color: #0dd8f4!important;
+    z-index: 99999999999999999;
+}
+.choice-month{
+    box-shadow: 0 0 8px #0dd8f4;
+    width: 230px;
+    height:0.794rem;
+    margin-top:0.5rem;
+    line-height:0.794rem;
+    text-align:center;
+    color: #0dd8f4;
+}
+.flexoCalendar thead, .flexoCalendar th {
+    background-color:  #1a3f96;
+    font-weight: normal;
+    color:#0dd8f4;
+}
+
+
+.flexoCalendar thead, .flexoCalendar th {
+    background-color:  #00112e;
+    font-weight: normal;
+    color: #0dd8f4;
+}
+#calendar-monthly td.tmonth .month {
+    color: #0dd8f4!important;
+}
+/*wenzi*/
+.frist-top{
+    flex-direction: column;
+    margin-top: -1rem;
+}
+.each-title{
+    width:30%;
+    border-right:1px dashed #fff;
+    text-align:center;
+    padding:0 7%;
+    height:1.8rem;
+    /*margin-bottom: 0.5rem;*/
+}
+.big-title-content{
+    padding:0.5rem 10%;
+    color:#fff;
+ }
+.text-description-details{
+    padding:0.4rem 4%;
+    color:#0194e1;
+}
+/**向下的三角**/
+.sanjiao_down {
+    position: absolute;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    font-size: 0;
+    line-height: 0;
+    border-width: 10px;
+    border-style: solid;
+    border-color:transparent transparent  #021130  transparent;
+    top: 28%;
+    z-index:1000;
+    right: 13%;
+}
+#avgGetOnStationCount，#avgRideCount，#avgOnTime{
+    height:0.8rem;
+}
+.each-title :first-child{
+    height:0.88rem;
+}
+

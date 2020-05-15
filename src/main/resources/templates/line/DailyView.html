@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+    <title>index</title>
+    <link rel="stylesheet" href="/css/chart/FlexoCalendar.css">
+    <link rel="stylesheet" href="/css/chart/base.css">
+    <link rel="stylesheet" href="/css/chart/lineIndex.css">
+</head>
+
+<body>
+<div class="modal-top flex">
+    <div class="flex">
+        <a href="/line/dailyView">
+            <div class="tab-switch slesct-tab">日视图</div>
+        </a>
+        <a href="/line/weekView">
+            <div class="tab-switch "> 周视图</div>
+        </a>
+        <a href="/line/monthView">
+            <div class="tab-switch "> 月视图</div>
+        </a>
+    </div>
+    <div class="flex choice">
+        <div class="choice-tab choice-company">线路查询</div>
+        <div class="choice-tab choice-direction">方向查询</div>
+        <div class="choice-tab choice-month">选择周期</div>
+        <div class="calendar-wrapper ">
+            <div id="calendar"></div>
+        </div>
+        <div class="direction-wrapper ">
+            <div class="direction-weekly">上行</div>
+            <div class="direction-weekly">下行</div>
+        </div>
+        <div class="company-wrapper">
+        </div>
+    </div>
+    </div>
+</div>
+<img class='header-bg' src="/image/header_bg.png" alt="背景图片">
+<div class="modal-title">
+    <span style="font-size:1.218rem">天津</span>公交OD数据分析
+</div>
+<!-- 日视图 -->
+<div class="daily-view selcted">
+    <div class=" daily-view-title">
+        <div class='daily-view-top'>
+            <div class='chart-title'>文字描述</div>
+            <div class="big-title-content" id="desc"><!--2020年01月06日，808路上行方向总计消费次数共为 <span class="several-time">？次</span>，换乘次数共为<span class="several-time">？次</span>--></div>
+        </div>
+    </div>
+    <div class=" daily-view-one">
+        <div class='daily-view-top'>
+            <div class='chart-title'>站点换乘技术统计图</div>
+            <div id="siteTransfer" data-view="generateSiteTransferChart" class="chartArea">
+            </div>
+        </div>
+        <div class="daily-view-top" style="margin-left: 0.8rem;">
+            <div class='chart-title'>站点上下车，在车人数统计图</div>
+            <div id="onAndOff-chart" data-view="generateOnAndOffChartBarLine" class="chartArea">
+            </div>
+        </div>
+    </div>
+    <div class="flex daily-view-two">
+        <div class="daily-view-bottom">
+            <div class='chart-title'>每个时间段上下车次数统计图</div>
+            <div id="onAndOffPerHour" data-view="generateOnAndOffPerHourChart" class="chartArea">
+            </div>
+        </div>
+
+            <div class="daily-view-bottom" style="margin: 0 0.8rem; flex:1;">
+                <div class='chart-title'>五峰消费图</div>
+                <div id="fivePeaks" data-view="generateFivePeaksChart" class="chartArea">
+                </div>
+            </div>
+        <div class='daily-view-bottom'>
+            <div class='chart-title'>每个时间段换乘图</div>
+            <div id="transferPerHour" data-view="generateTransferPerHourChart" class="chartArea">
+            </div>
+        </div>
+        </div>
+
+</div>
+<div id="bigg">
+<!--    <div id="bigger"></div>-->
+    <img src="/image/cancel.png">
+</div>
+<!--引用基本的js-->
+<script src="/js/chart/jquery.js"></script>
+<script src="/js/chart/echarts.min.js"></script>
+<script src="/js/chart/FlexoCalendar.js"></script>
+<script src="/js/chart/generalHandleData.js"></script>
+<script src="/js/chart/dateUtil.js"></script>
+
+<script src="/js/chart/line/lineOption.js"></script>
+<script src="/js/chart/baseChart/bar/generateBar.js"></script>
+<script src="/js/chart/baseChart/barLine/generateBarLine.js"></script>
+<!--引用统计图-->
+<script src="/js/chart/line/daily/onAndOff.js"></script>
+<script src="/js/chart/line/daily/fivePeaks.js"></script>
+<script src="/js/chart/line/daily/onAndOffPerHour.js"></script>
+<script src="/js/chart/line/daily/siteTransfer.js"></script>
+<script src="/js/chart/line/daily/transferPerHour.js"></script>
+<!--引用OD分析图插件-->
+<script src="/js/chart/line/daily/analysisDiagram/index.js"></script>
+<script src="/js/chart/line/daily/analysisDiagram/data-set.min.js"></script>
+<script src="/js/chart/line/daily/analysisDiagram/g2.min.js"></script>
+
+<script src="/js/chart/baseChart/lineChart/generateLineChart.js"></script>
+<script src="/js/chart/chartDescHandle.js"></script>
+<script>
+    let params = {
+        queryTime: '2020-01-15',
+        lineNo: '808',
+        direction: '上行'
+    }
+
+    $(function () {
+        // let paramsTime  =  $(".current-day").attr('data-time')
+        let dayTime = getDayTime();
+        $(".choice-company").text(params.lineNo)
+        $(".choice-month").text(dayTime)
+        $(".choice-direction").text(params.direction)
+        params.queryTime= dayTime
+        initChart()
+    })
+
+    // 1 初始化所有view2222 div
+    $(function () {
+        // initChart()
+    })
+
+    function initChart() {
+        getLineDescByDay(params)
+        $(".chartArea").each(function () {
+            execute($(this), $(this).attr('id'), params, false);
+        });
+    }
+
+    // 2 监听所有view2222 div click
+    // $(".chartArea").click(execute($(ggg), params))
+    $(".chartArea").click(function () {
+        $("#bigger").remove()
+        $("#bigg").append("<div id=\"bigger\"></div>")
+        $("#bigg").show()
+        execute($(this),'bigger', params, true)
+    })
+
+    function execute(el, id, params, flag) {
+        //flag参数用于区分是否为放大显示
+        var fnStr = el.data("view")
+        window[fnStr](id, params, flag)
+    }
+
+    //点关闭取消
+    $("#bigg img").click(function () {
+        $("#bigg").hide();
+    });
+
+
+    $(function () {
+        $(".hot-tab1").click(function () {
+            $(this).addClass("slesct-tab").siblings().removeClass("slesct-tab");
+            $('.hot-tab1-img').eq($(this).index()).addClass('show').siblings().removeClass('show');
+        })
+    })
+
+
+    // 点击查看线路
+    $(".choice-company").click(function () {
+        $(".calendar-wrapper").removeClass("show");
+        $(".direction-wrapper").removeClass("show");
+        if ($('.company-wrapper').hasClass('show')) {
+            $(".company-wrapper").removeClass("show");
+        } else {
+            $(".company-wrapper").addClass("show");
+        }
+    });
+    // let companyList = ['111', '22222']
+    // let company = '';
+    // for (var i = 0; i < companyList.length; i++) {
+    //     company += '<div class="company-weekly">' + companyList[i] + '</div>'
+    // }
+    // $('.company-wrapper').html(company);
+
+    $("body").on('click','.company-weekly',function () {
+        $('.company-weekly').eq($(this).index()).addClass('selection').siblings().removeClass('selection');
+        let textt = $('.company-weekly').eq($(this).index()).text()
+        $(".choice-company").text(textt);
+        params.lineNo = textt
+        initChart()
+        $("#bigg").hide();
+        $(".company-wrapper").removeClass("show");
+    });
+
+    //点击查看方向
+    $(function () {
+        $(".choice-direction").click(function () {
+            $(".company-wrapper").removeClass("show");
+            $(".calendar-wrapper").removeClass("show");
+            if ($('.direction-wrapper').hasClass('show')) {
+                $(".direction-wrapper").removeClass("show");
+            } else {
+                $(".direction-wrapper").addClass("show");
+            }
+        });
+    })
+    $(".direction-weekly").click(function () {
+        $('.direction-weekly').eq($(this).index()).addClass('selection').siblings().removeClass('selection');
+        let textt = $('.direction-weekly').eq($(this).index()).text()
+        $(".choice-direction").text(textt);
+        params.direction = textt
+        initChart()
+        $("#bigg").hide();
+        $(".direction-wrapper").removeClass("show");
+    });
+
+    //点击查看日历
+    $(".choice-month ").click(function () {
+        $(".company-wrapper").removeClass("show");
+        $(".direction-weekly").removeClass("show");
+        if ($('.calendar-wrapper').hasClass('show')) {
+            $(".calendar-wrapper").removeClass("show");
+        } else {
+            $(".calendar-wrapper").addClass("show");
+        }
+    });
+    //日历
+    $("#calendar").flexoCalendar({
+        setYear: 2020, setMonth: 1, selectDate: 'each-each-each',
+        onselect: function (date) {
+            $(".calendar-wrapper").removeClass("show");
+            $(".choice-month").text(date);
+            params.queryTime = date
+            initChart()
+            $("#bigg").hide();
+        }
+    });
+    //鼠标滑过添加背景色
+    $("body").on('mouseenter','.direction-weekly,.company-weekly',function () {
+            $(this).addClass('selection');
+    })
+    $("body").on('mouseleave','.direction-weekly,.company-weekly',function () {
+        $(this).removeClass('selection');
+    })
+
+    //点击其他地方隐藏弹出框
+    $(document).mouseup(function (e) {
+        var _con = $('.choice-month,.choice-direction,.choice-company,.calendar-wrapper');   // 设置目标区域
+        if (!_con.is(e.target) && _con.has(e.target).length === 0) { // Mark 1
+            $(".company-wrapper").removeClass("show");
+            $(".direction-wrapper").removeClass("show");
+            $(".calendar-wrapper").removeClass("show");
+        }
+    });
+</script>
+</body>
+
+</html>

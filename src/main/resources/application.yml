@@ -1,0 +1,22 @@
+server:
+  port: 8866
+  servlet:
+    context-path:
+spring:
+  data:
+    mongodb:
+#      uri: mongodb://192.168.17.228:27017/bus
+#      host: localhost
+      host: 192.168.17.115
+      port: 27017
+      database: bus
+      username: root
+      password: root
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: oracle.jdbc.driver.OracleDriver
+    url: jdbc:oracle:thin:@192.168.17.117:1521/orcl
+    username: TJADMIN
+    password: ibmora8
+  mvc:
+    static-path-pattern: /**

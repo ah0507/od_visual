@@ -1,0 +1,298 @@
+
+@media (min-width: 980px){
+    html{font-size: 25px!important}
+} /*>=1024ÃƒÆ’Ã‚Â§Ãƒâ€¦Ã‚Â¡ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¾ÃƒÆ’Ã‚Â¨Ãƒâ€šÃ‚Â®Ãƒâ€šÃ‚Â¾ÃƒÆ’Ã‚Â¥Ãƒâ€šÃ‚Â¤ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¡*/
+
+@media (min-width: 1100px) {
+    html{font-size: 26px!important}
+} /*>=1100ÃƒÆ’Ã‚Â§Ãƒâ€¦Ã‚Â¡ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¾ÃƒÆ’Ã‚Â¨Ãƒâ€šÃ‚Â®Ãƒâ€šÃ‚Â¾ÃƒÆ’Ã‚Â¥Ãƒâ€šÃ‚Â¤ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¡*/
+@media (min-width: 1280px) {
+    html{font-size: 28px!important;}
+} /*>=1280ÃƒÆ’Ã‚Â§Ãƒâ€¦Ã‚Â¡ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¾ÃƒÆ’Ã‚Â¨Ãƒâ€šÃ‚Â®Ãƒâ€šÃ‚Â¾ÃƒÆ’Ã‚Â¥Ãƒâ€šÃ‚Â¤ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¡*/
+@media (min-width: 1440px) {
+    html{font-size: 30.8px !important;}
+}
+html{
+    /*background:url('/image/bg.png') no-repeat;*/
+    width:100%;
+    height:100%;
+}
+body {
+    /*background:url('/image/bg.png') no-repeat;*/
+    background:#10213e;
+    position: fixed;
+    bottom: 0;
+    top:0;
+    left:0;
+    right:0;
+}
+
+.modal-top{
+    padding:  0.294rem 1rem 0 1rem;
+    justify-content: space-between;
+}
+.tab-switch{
+    background:url('/image/hover_bg.png')no-repeat;
+    background-size:4rem 0.971rem;
+    width:4.118rem;
+    height:0.971rem;
+    line-height:0.971rem;
+    text-align: center;
+    font-size: 0.588rem;
+    color: #ffffff;
+    box-sizing: border-box;
+}
+.slesct-tab{
+    color:#0194e1!important;
+}
+.modal-title{
+    font:italic bolder 0.85rem/1.471rem Microsoft YaHei;
+    height:1.471rem;
+    color:#ffffff;
+    width:100%;
+    margin-top:-3.5rem;
+    margin-bottom: 2.353rem;
+    text-align: center;
+}
+
+.choice{
+    height:3.5rem;
+    position: relative;
+}
+.choice-tab{
+    /*background:url('/image/search.png')no-repeat;*/
+    bacground: #0b123a;
+    border: 1px solid #4d6a93;
+    background-size:4.294rem 1.588rem;
+    width:6.3rem;
+    height: 1.588rem;
+    line-height: 1.765rem;
+    color:#ffffff;
+    /*     padding-left:1.56rem; */
+    font-size: 0.412rem;
+    cursor:pointer;
+}
+.direction-wrapper{
+    width: 3.912rem;
+    position: absolute;
+    top: 40px;
+    left:26.5%;
+    color:#0dd8f4;
+    display: none;
+    height: 4.118rem;
+    overflow :auto;
+    background:#00112e;
+    z-index: 99999999999999999;
+    text-align: center;
+}
+.company-wrapper{
+    width: 3.912rem;
+    position: absolute;
+    top: 40px;
+    /*     left:-5%; */
+    color:#0dd8f4;
+    display: none;
+    height: 4.118rem;
+    overflow :auto;
+    background:#00112e;
+    z-index: 99999999999999999;
+    text-align: center;
+}
+.company-weekly{
+    color:#0dd8f4;
+    height: 36px;
+    line-height: 36px;
+    cursor:pointer;
+}
+.direction-weekly{
+    color:#0dd8f4;
+    height: 36px;
+    line-height: 36px;
+    cursor:pointer;
+}
+.calendar-wrapper{
+    position: absolute;
+    top: 25.7px;
+    left:53.2%;
+    display: none;
+    height: 230px;
+    background-color:  #00112e;
+    color: #0dd8f4!important;
+    z-index: 99999999999999999;
+    color: #0dd8f4!important;
+}
+
+.header-bg{
+    position: absolute;
+    width: 100%;
+    margin-top:-2.2rem;
+}
+
+.modal-main, .daily-view{
+    padding:0 0.882rem;
+    padding-bottom:1rem;
+    margin:0 2.8rem;
+    margin-top: -0.6rem;
+    display:flex;
+    height:88%;
+    justify-content: space-between;
+}
+.modal-main{
+    flex-direction: column;
+}
+.daily-view{
+    flex-direction: column;
+}
+.daily-view-title{
+    width: 100%;
+    display: flex;
+    /*flex-direction: column;*/
+    height: 10%;
+    margin-bottom: 1rem;
+}
+.daily-view-one{
+    width: 100%;
+    display: flex;
+    /*flex-direction: column;*/
+    height: 46%;
+    margin-bottom: 1rem;
+}
+.daily-view-two{
+    width: 100%;
+    display: flex;
+    /*flex-direction: column;*/
+    height: 46%;
+}
+.chart-right{
+    width:54%;
+}
+.chart-left{
+    width:46%;
+    margin-right: 0.5rem;
+}
+
+
+.modal-main-one{
+    display: flex;
+    margin-bottom:0.294rem;
+    flex:1;
+}
+
+.modal-main-two{
+    flex:1;
+    margin-bottom:0.294rem;
+}
+
+.modal-main-there{
+    flex:1;
+}
+
+#site-rank,#fivePeaks,#onAndOff-chart,#siteTransfer,#onAndOffPerHour,#transferPerHour,#analysis-diagram,
+#crowd-chart,#five-chart,#consume-chart,#transfer-chart,.big-title-content{
+    width: 100%;
+    height: calc(100% - 1rem);
+    background: url(/image/bg_main.png)no-repeat;
+    margin-top: 1rem;
+    background-size:100% 100%;
+    background-position: bottom;
+}
+.big-title-content{
+    padding:0.5rem 4%;
+    padding-bottom: 1rem;
+    color:#0194e1;
+    font-size: 16px;
+}
+.chart-left,.chart-right
+{
+    background: url(/image/bg_title.png)no-repeat;
+    background-size: 100% 1rem;
+    position: relative;
+}
+.chart-title{
+    position: absolute;
+    background-image:-webkit-linear-gradient(360deg,#0075ff 0%,#0072ff 10%,#00eaff 50%,#01aaff 90%,#0395e4 100%);
+    font-size:0.55rem;
+    font-weight: 800;
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    height: 1rem;
+    line-height:1rem;
+    left:0.706rem;
+}
+
+.show{
+    display:block;
+}
+
+.daily-view-bottom,.daily-view-top{
+    background: url(/image/bg_title.png)no-repeat;
+    background-size: 100% 1rem;
+    position: relative;
+}
+.daily-view-left{
+    flex: 1;
+    margin-right: 0.4rem;
+    margin-top:10px;
+}
+.daily-view-bottom{
+    flex:2;
+    height: 100%;
+}
+.daily-view-top{
+    flex:1;
+}
+
+.selection{
+    background: #1a3f96;
+}
+
+#analysis-diagram div{
+    width: 100%;
+    height:100%;
+}
+#canvas_1{
+    width:80%;
+    height:100%;
+}
+.choice-company, .choice-direction{
+    box-shadow: 0 0 8px #0dd8f4;
+    width: 3.912rem;
+    height:0.794rem;
+    margin-top:0.5rem;
+    line-height:0.794rem;
+    margin-right:10px;
+    text-align:center;
+    color: #0dd8f4;
+}
+.choice-month{
+    box-shadow: 0 0 8px #0dd8f4;
+    width: 230px;
+    height:0.794rem;
+    margin-top:0.5rem;
+    line-height:0.794rem;
+    text-align:center;
+    color: #0dd8f4;
+}
+.flexoCalendar thead, .flexoCalendar th {
+    background-color:  #1a3f96;
+    font-weight: normal;
+    color:#0dd8f4;
+}
+
+
+#calendar-monthly td.tmonth .month {
+    color: #0dd8f4;
+}
+
+.company-wrapper,
+.direction-wrapper,
+.calendar-wrapper{
+    box-shadow: 0 0 8px #0dd8f4;
+    border-radius:0 0 5px 5px;
+    border: 1px solid #4d6a93;
+}
+.flexoCalendar thead, .flexoCalendar th {
+    background-color:  #00112e;
+    font-weight: normal;
+    color: #0dd8f4;
+}

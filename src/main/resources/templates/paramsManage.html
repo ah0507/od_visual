@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>参数管理</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/global.css">
+</head>
+<body>
+<div class="container">
+    <img src="/image/ding.png" alt="" class="img">
+    <div>
+        <div class="form-group">
+            <label for="pageNumber">起始页</label>
+            <input type="text" id="pageNumber" class="form-control" oninput="this.value=this.value.replace(/[^\d.]/g,'')">
+        </div>
+        <div class="form-group">
+            <label for="pageSize">每页数量</label>
+            <input type="text" id="pageSize" class="form-control" oninput="this.value=this.value.replace(/[^\d.]/g,'')">
+        </div>
+        <div class="form-group">
+            <label for="inTimeValue">进站时间阈值(秒)</label>
+            <input type="text" id="inTimeValue" class="form-control" oninput="this.value=this.value.replace(/[^\d.]/g,'')">
+        </div>
+        <div class="form-group">
+            <label for="outTimeValue">离站时间阈值(秒)</label>
+            <input type="text" id="outTimeValue" class="form-control" oninput="this.value=this.value.replace(/[^\d.]/g,'')">
+        </div>
+        <div class="form-group">
+            <label for="addTimeValue">刷卡时间和进出站时间差值的阈值(秒)</label>
+            <input type="text" id="addTimeValue" class="form-control" oninput="this.value=this.value.replace(/[^\d.]/g,'')">
+        </div>
+        <div class="form-group">
+            <label for="addInAndOutTimeValue">进出站时间增加的阈值(秒)</label>
+            <input type="text" id="addInAndOutTimeValue" class="form-control" oninput="this.value=this.value.replace(/[^\d.]/g,'')">
+        </div>
+        <div class="form-group">
+            <label for="endStationTimeValue">终点站的进站时间的阈值(秒)</label>
+            <input type="text" id="endStationTimeValue" class="form-control" oninput="this.value=this.value.replace(/[^\d.]/g,'')">
+        </div>
+        <div class="form-group">
+            <label for="distanceValue">最近站距的阈值(米)</label>
+            <input type="text" id="distanceValue" class="form-control" oninput="this.value=this.value.replace(/[^\d.]/g,'')">
+        </div>
+        <div class="form-group">
+            <label for="regularTravelTimeValue">计算下车点规律出行一段时间范围阈值(天)</label>
+            <input type="text" id="regularTravelTimeValue" class="form-control" oninput="this.value=this.value.replace(/[^\d.]/g,'')">
+        </div>
+        <div class="form-group">
+            <label for="regularTravelChanceValue">概率阈值（小数）</label>
+            <input type="text" id="regularTravelChanceValue" class="form-control" oninput="this.value=this.value.replace(/[^\d.]/g,'')">
+        </div>
+        <div class="form-group">
+            <label for="addTicketValue">票款扩样系数（小数）</label>
+            <input type="text" id="addTicketValue" class="form-control" oninput="this.value=this.value.replace(/[^\d.]/g,'')">
+        </div>
+        <div class="form-group">
+            <label for="addTicketValue">每辆车额定人数</label>
+            <input type="text" id="ratedNumber" class="form-control" oninput="this.value=this.value.replace(/[^\d.]/g,'')">
+        </div>
+        <div class="form-group">
+            <label for="expireTimeRangeValue">数据过期清理机制(天)</label>
+            <input type="text" id="expireTimeRangeValue" class="form-control" oninput="this.value=this.value.replace(/[^\d.]/g,'')">
+        </div>
+        <div class="form-group">
+            <label for="calculateHandleTime">算法每日运行时间段（cron表达式）</label>
+            <input type="text" id="calculateHandleTime" class="form-control">
+        </div>
+        <button type="button" class="btn btn-primary" onclick="submit()">提交</button>
+    </div>
+</div>
+
+</body>
+<script type="text/javascript" src="/js/jquery-3.3.1.js"></script>
+<script type="text/javascript" src="/js/paramsManage.js"></script>
+</html>
